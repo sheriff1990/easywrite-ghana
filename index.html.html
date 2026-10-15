@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Friendly, affordable writing services for personal messages, CVs, professional letters and social media content.">
+  <title>EasyWrite Ghana | Words That Work</title>
+  <style>
+    :root {
+      --ink: #182333;
+      --muted: #657184;
+      --cream: #fbf8f2;
+      --paper: #ffffff;
+      --purple: #6246d9;
+      --purple-dark: #4930b5;
+      --mint: #dff7ec;
+      --line: #e8e5ef;
+      --gold: #f5bd55;
+      --shadow: 0 18px 50px rgba(31, 25, 68, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251, 248, 242, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232,229,239,.8);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 850; letter-spacing: -.5px; font-size: 1.1rem; }
+    .brand-mark {
+      display: grid; place-items: center; width: 42px; height: 42px;
+      border-radius: 14px; color: white; background: var(--purple); font-size: 1.25rem;
+      box-shadow: 0 8px 20px rgba(98,70,217,.24);
+    }
+    .brand small { display: block; color: var(--muted); font-size: .68rem; font-weight: 650; letter-spacing: 1.4px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: #495366; font-size: .93rem; font-weight: 650; }
+    .nav-links a:hover { color: var(--purple); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; border-radius: 13px; padding: 13px 19px; font: inherit;
+      font-weight: 750; cursor: pointer; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--purple); color: white; box-shadow: 0 10px 22px rgba(98,70,217,.22); }
+    .btn-primary:hover { background: var(--purple-dark); }
+    .btn-light { background: white; color: var(--ink); border: 1px solid var(--line); }
+    .hero { padding: 78px 0 70px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 56px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+      padding: 7px 12px; background: var(--mint); color: #176b4d; font-size: .8rem; font-weight: 800;
+    }
+    h1 { font-size: clamp(2.65rem, 5vw, 4.65rem); line-height: 1.04; letter-spacing: -3px; margin: 20px 0; max-width: 650px; }
+    h1 span { color: var(--purple); }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 555px; margin: 0 0 27px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .trust { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 25px; color: #596577; font-size: .88rem; }
+    .trust span::before { content: "✓"; color: #16845b; font-weight: 900; margin-right: 7px; }
+    .hero-art { position: relative; min-height: 420px; display: grid; place-items: center; }
+    .blob { position: absolute; width: 360px; height: 360px; border-radius: 42% 58% 55% 45% / 46% 43% 57% 54%; background: #e8e1ff; transform: rotate(-10deg); }
+    .paper-card {
+      position: relative; width: min(340px, 88%); padding: 27px; background: white;
+      border: 1px solid #f0edf7; border-radius: 24px; box-shadow: var(--shadow); transform: rotate(3deg);
+    }
+    .paper-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .dots { display: flex; gap: 5px; } .dots i { width: 7px; height: 7px; border-radius: 50%; background: #d7d1e8; }
+    .mini-label { font-size: .72rem; font-weight: 800; letter-spacing: 1.2px; color: var(--purple); text-transform: uppercase; }
+    .paper-card h3 { font-size: 1.45rem; line-height: 1.2; margin: 0 0 12px; letter-spacing: -.5px; }
+    .paper-card p { font-size: .88rem; color: var(--muted); margin: 0 0 18px; }
+    .fake-line { height: 8px; border-radius: 10px; background: #eeeaf7; margin: 10px 0; }
+    .fake-line.short { width: 65%; } .fake-line.mid { width: 83%; }
+    .note {
+      position: absolute; right: -5px; bottom: 35px; background: #fff1cb; padding: 15px 18px;
+      border-radius: 16px; box-shadow: 0 12px 30px rgba(60,45,10,.12); transform: rotate(-6deg);
+      font-weight: 800; font-size: .9rem;
+    }
+    .note span { display: block; font-size: 1.35rem; }
+    section { padding: 75px 0; }
+    .section-head { text-align: center; max-width: 650px; margin: 0 auto 38px; }
+    .section-head .kicker { color: var(--purple); text-transform: uppercase; letter-spacing: 1.5px; font-size: .78rem; font-weight: 850; }
+    h2 { font-size: clamp(2rem, 3.4vw, 3rem); letter-spacing: -1.5px; line-height: 1.12; margin: 10px 0 14px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .services { background: white; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card {
+      border: 1px solid var(--line); border-radius: 20px; padding: 25px; background: white;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: #f0ecff; font-size: 1.5rem; margin-bottom: 17px; }
+    .service-card:nth-child(2) .icon { background: #e2f8ed; }
+    .service-card:nth-child(3) .icon { background: #fff0d5; }
+    .service-card h3 { margin: 0 0 8px; font-size: 1.18rem; }
+    .service-card p { color: var(--muted); font-size: .94rem; margin: 0 0 15px; }
+    .service-card ul { list-style: none; padding: 0; margin: 0; color: #485367; font-size: .9rem; }
+    .service-card li { margin: 7px 0; }
+    .service-card li::before { content: "✓"; color: #18835c; font-weight: 900; margin-right: 8px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .price-card { border-radius: 20px; background: white; border: 1px solid var(--line); padding: 26px; }
+    .price-card.featured { background: var(--ink); color: white; border-color: var(--ink); transform: translateY(-7px); }
+    .price-card h3 { margin: 0 0 7px; }
+    .price-card p { color: var(--muted); font-size: .9rem; min-height: 46px; }
+    .price-card.featured p { color: #c5ccda; }
+    .price { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 14px 0; }
+    .price small { font-size: .8rem; font-weight: 600; letter-spacing: 0; color: var(--muted); }
+    .price-card.featured .price small { color: #c5ccda; }
+    .price-card .btn { width: 100%; margin-top: 10px; }
+    .how-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: center; }
+    .how-copy p { color: var(--muted); }
+    .steps { display: grid; gap: 14px; }
+    .step { display: flex; gap: 16px; padding: 18px; background: white; border: 1px solid var(--line); border-radius: 17px; }
+    .step-num { flex: 0 0 40px; height: 40px; display: grid; place-items: center; background: var(--purple); color: white; border-radius: 13px; font-weight: 900; }
+    .step h3 { margin: 0 0 4px; font-size: 1rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .contact { background: #eee9ff; }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+    .contact-copy p { color: #5c6175; }
+    .contact-box { background: white; padding: 27px; border-radius: 22px; box-shadow: 0 14px 40px rgba(49,34,105,.08); }
+    label { display: block; font-weight: 750; font-size: .87rem; margin: 13px 0 6px; }
+    input, select, textarea { width: 100%; border: 1px solid #ded9ea; background: #fff; border-radius: 11px; padding: 12px 13px; font: inherit; color: var(--ink); outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(98,70,217,.12); }
+    textarea { resize: vertical; min-height: 110px; }
+    .contact-box .btn { width: 100%; margin-top: 18px; }
+    .fine-print { font-size: .78rem; color: var(--muted); margin: 10px 0 0; }
+    footer { padding: 27px 0; background: var(--ink); color: #dbe0ea; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; font-size: .85rem; }
+    .footer-row strong { color: white; }
+    .menu-toggle { display: none; }
+    @media (max-width: 850px) {
+      .hero-grid, .how-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .hero { padding-top: 55px; }
+      .hero-art { min-height: 350px; }
+      .blob { width: 300px; height: 300px; }
+      .cards, .pricing-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform: none; }
+      .nav-links { gap: 15px; }
+      .nav-links a:not(.btn) { display: none; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .nav { min-height: 68px; }
+      .brand { font-size: 1rem; }
+      .nav .btn { padding: 10px 12px; font-size: .82rem; }
+      h1 { letter-spacing: -1.8px; }
+      section { padding: 58px 0; }
+      .hero-art { min-height: 320px; }
+      .paper-card { padding: 22px; }
+      .note { right: -2px; bottom: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="EasyWrite Ghana home">
+        <span class="brand-mark">✍</span>
+        <span>EasyWrite Ghana<small>Words that work</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">How it works</a>
+        <a class="btn btn-primary" href="#contact">Request a service ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">✦ Friendly, affordable writing help</div>
+          <h1>Need the right words? <span>Let's write them.</span></h1>
+          <p>From heartfelt birthday messages to polished CVs and business captions, get writing that sounds clear, thoughtful and professional.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Tell us what you need <span>→</span></a>
+            <a class="btn btn-light" href="#services">Explore services</a>
+          </div>
+          <div class="trust"><span>Personalized writing</span><span>Clear pricing</span><span>Online service</span></div>
+        </div>
+        <div class="hero-art" aria-label="Decorative writing sample illustration">
+          <div class="blob"></div>
+          <div class="paper-card">
+            <div class="paper-top"><span class="mini-label">Your words, refined</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <h3>A little help can make your words shine.</h3>
+            <p>Thoughtful messages. Professional documents. Captions that get noticed.</p>
+            <div class="fake-line"></div><div class="fake-line mid"></div><div class="fake-line short"></div>
+            <div style="margin-top:23px;color:#6246d9;font-weight:850">Made with care ✦</div>
+          </div>
+          <div class="note">Words matter <span>💜</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">What we can help with</div>
+          <h2>Writing services for everyday needs</h2>
+          <p>Choose a service, share your details, and we'll help shape your ideas into clear, useful writing.</p>
+        </div>
+        <div class="cards">
+          <article class="service-card">
+            <div class="icon">💌</div>
+            <h3>Personalized messages</h3>
+            <p>Make special moments feel personal with words written for the occasion.</p>
+            <ul><li>Birthday wishes and greetings</li><li>Thank-you and congratulations</li><li>Romantic or thoughtful messages</li></ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">📝</div>
+            <h3>CVs & professional writing</h3>
+            <p>Present your experience and ideas clearly with polished documents.</p>
+            <ul><li>CV editing and formatting</li><li>Application and business letters</li><li>Professional emails</li></ul>
+          </article>
+          <article class="service-card">
+            <div class="icon">📣</div>
+            <h3>Social media content</h3>
+            <p>Help your business communicate clearly and connect with customers.</p>
+            <ul><li>WhatsApp status adverts</li><li>Facebook and Instagram captions</li><li>Product descriptions</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Simple starting prices</div>
+          <h2>Pick what fits your needs</h2>
+          <p>These are example starting prices in Ghana cedis. The final quote depends on the length and complexity of the request.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Personal message</h3>
+            <p>A short, customized message for a special person or occasion.</p>
+            <div class="price">GH₵ 5–25</div>
+            <a class="btn btn-light" href="#contact" data-service="Personalized message">Choose this</a>
+          </article>
+          <article class="price-card featured">
+            <h3>CV or formal letter</h3>
+            <p>Editing, formatting or drafting based on details you provide.</p>
+            <div class="price">GH₵ 10–50</div>
+            <a class="btn btn-primary" style="background:#fff;color:#4930b5" href="#contact" data-service="CV or professional letter">Choose this</a>
+          </article>
+          <article class="price-card">
+            <h3>Social media copy</h3>
+            <p>A caption or small set of promotional posts for your business.</p>
+            <div class="price">GH₵ 10–75</div>
+            <a class="btn btn-light" href="#contact" data-service="Social media content">Choose this</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" style="background:#fff">
+      <div class="wrap how-grid">
+        <div class="how-copy">
+          <div class="kicker" style="color:var(--purple);font-size:.78rem;font-weight:850;letter-spacing:1.5px">Easy as 1–2–3</div>
+          <h2>From your idea to a finished draft</h2>
+          <p>You don't need to know exactly what to write. Tell us the purpose, the tone you want and any important details.</p>
+          <a class="btn btn-primary" href="#contact">Start a request →</a>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h3>Send your request</h3><p>Choose a service and explain what you need in the form below.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h3>Confirm the price and timing</h3><p>We'll agree on the scope, price and delivery time before work begins.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h3>Review your writing</h3><p>Check the draft and request reasonable corrections before using it.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <div class="kicker" style="color:var(--purple);font-size:.78rem;font-weight:850;letter-spacing:1.5px">Let's get started</div>
+          <h2>What can we help you write?</h2>
+          <p>Fill in the form to prepare a request. When you press the button, your email app will open with your message ready to send.</p>
+          <p><strong>Tip:</strong> Please don't include passwords, bank PINs or other sensitive information in your request.</p>
+          <a class="btn btn-primary" id="whatsappTop" href="#" target="_blank" rel="noopener" style="margin-top:10px">Chat with us on WhatsApp ↗</a>
+        </div>
+        <form class="contact-box" id="requestForm">
+          <label for="name">Your name</label>
+          <input id="name" name="name" placeholder="e.g. Ama" required>
+          <label for="service">What do you need?</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option>Personalized message</option>
+            <option>CV or professional letter</option>
+            <option>Social media content</option>
+            <option>Something else</option>
+          </select>
+          <label for="budget">Your budget (optional)</label>
+          <select id="budget" name="budget">
+            <option value="">Choose a budget</option>
+            <option>Under GH₵ 20</option>
+            <option>GH₵ 20–50</option>
+            <option>GH₵ 50–100</option>
+            <option>Let's discuss</option>
+          </select>
+          <label for="details">Tell us a little about the request</label>
+          <textarea id="details" name="details" placeholder="What would you like written? Include the tone and any key details." required></textarea>
+          <button class="btn btn-primary" type="submit">Prepare my request by email ✉</button>
+          <button class="btn btn-light" id="whatsappSubmit" type="button" style="width:100%;margin-top:10px">Send request on WhatsApp ↗</button>
+          <p class="fine-print">Before publishing, add your business email and WhatsApp number in the code. The WhatsApp button will then open a chat with your prepared request.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div><strong>EasyWrite Ghana</strong> · Words that work.</div>
+      <div>© <span id="year"></span> EasyWrite Ghana. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // IMPORTANT: Replace this with the email address you want customers to contact.
+    const BUSINESS_EMAIL = "yourbusiness@example.com";
+
+    // Replace with your WhatsApp number including country code, digits only.
+    // Example format for Ghana: 233XXXXXXXXX (do not include +, spaces, or dashes).
+    const WHATSAPP_NUMBER = "233XXXXXXXXX";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function getRequestMessage() {
+      const name = document.getElementById("name").value.trim();
+      const service = document.getElementById("service").value;
+      const budget = document.getElementById("budget").value || "Not specified";
+      const details = document.getElementById("details").value.trim();
+      return "Hello EasyWrite Ghana! I'd like to request a writing service.\\n\\nName: " + name +
+        "\\nService: " + service + "\\nBudget: " + budget + "\\nDetails: " + details;
+    }
+
+    function openWhatsApp() {
+      if (!/^\\d{10,15}$/.test(WHATSAPP_NUMBER) || WHATSAPP_NUMBER === "233XXXXXXXXX") {
+        alert("Please add your WhatsApp number in the website code first. Use country code and digits only, for example 233XXXXXXXXX for Ghana.");
+        return;
+      }
+      if (!document.getElementById("requestForm").reportValidity()) return;
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(getRequestMessage());
+      window.open(url, "_blank", "noopener");
+    }
+
+    document.getElementById("whatsappTop").addEventListener("click", function(event) {
+      if (!/^\\d{10,15}$/.test(WHATSAPP_NUMBER) || WHATSAPP_NUMBER === "233XXXXXXXXX") {
+        event.preventDefault();
+        alert("Please add your WhatsApp number in the website code first. Use country code and digits only, for example 233XXXXXXXXX for Ghana.");
+        return;
+      }
+      this.href = "https://wa.me/" + WHATSAPP_NUMBER;
+    });
+
+    document.getElementById("whatsappSubmit").addEventListener("click", openWhatsApp);
+
+    document.querySelectorAll("[data-service]").forEach(link => {
+      link.addEventListener("click", () => {
+        const service = link.getAttribute("data-service");
+        document.getElementById("service").value = service;
+      });
+    });
+
+    document.getElementById("requestForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const service = document.getElementById("service").value;
+      const budget = document.getElementById("budget").value || "Not specified";
+      const details = document.getElementById("details").value.trim();
+
+      if (BUSINESS_EMAIL === "yourbusiness@example.com") {
+        alert("The website is nearly ready! First, open the HTML file in a text editor and replace yourbusiness@example.com with your business email address.");
+        return;
+      }
+
+      const subject = encodeURIComponent("New writing request — " + service);
+      const body = encodeURIComponent(
+        "Hello EasyWrite Ghana,\n\nI'd like to request a writing service.\n\nName: " + name +
+        "\nService: " + service + "\nBudget: " + budget + "\nDetails: " + details +
+        "\n\nThank you."
+      );
+      window.location.href = "mailto:" + BUSINESS_EMAIL + "?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>
